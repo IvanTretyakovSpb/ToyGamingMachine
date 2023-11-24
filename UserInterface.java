@@ -39,7 +39,7 @@ public class UserInterface {
 
     String askToyName() {
         System.out.print("Введите наименование игрушки: ");
-        return scanner.nextLine();
+        return scanner.next();
     }
 
     int askNumber(String message) {
