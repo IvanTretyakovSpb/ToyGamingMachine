@@ -7,7 +7,7 @@ package ru.geekbrains.geektodolist.toyshop;
  * @version 1.0 24.11.2023
  */
 public interface GamingMachineInterface {
-    void put(String name);
+    void put(String name, int frequency);
 
     void letsFun();
 
