@@ -34,21 +34,8 @@ public class GamingMachine implements GamingMachineInterface {
     }
 
     /**
+     * Осуществляет выбор в случайном порядке игрушки из имеющегося набора согласно заданным частотам
      *
-     */
-    @Override
-    public void toyDraw() {
-        Toy toy = getToy();
-        if (toy == null) {
-            System.out.println("Розыгрыш окончен!");
-        } else {
-            String result = "Выпала игрушка: " + toy + "\n";
-            write(result);
-            System.out.println(result);
-        }
-    }
-
-    /**
      * @return экземпляр класса Toy или null при отсутствии доступных для розыгрыша игрушек
      */
     @Override
@@ -74,12 +61,20 @@ public class GamingMachine implements GamingMachineInterface {
      */
     @Override
     public void getAllToys() {
-        System.out.println("---------------------------------------------------------");
-        System.out.println("В данный момент в розыгрыше участвуют следующие игрушки:");
-        int i = 0;
-        for (Toy toy : boxOfToys) {
-            System.out.println(++i + ") " + toy);
+        if (!this.boxOfToys.isEmpty()) {
+            System.out.println("---------------------------------------------------------");
+            System.out.println("В данный момент в розыгрыше участвуют следующие игрушки:");
+            int i = 0;
+            for (Toy toy : boxOfToys) {
+                System.out.println(++i + ") " + toy);
+            }
+            System.out.println("---------------------------------------------------------");
+        } else {
+            System.out.println("---------------------------------------------------------");
+            System.out.println("В данный момент в игрушки в автомат не загружены!\n" +
+                    "Перед проведением розыгрыша необходимо выполнить загрузку.");
         }
+
     }
 
     @Override

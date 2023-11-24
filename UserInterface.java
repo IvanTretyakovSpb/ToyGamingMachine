@@ -1,7 +1,5 @@
 package ru.geekbrains.geektodolist.toyshop;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**

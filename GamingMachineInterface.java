@@ -9,8 +9,6 @@ package ru.geekbrains.geektodolist.toyshop;
 public interface GamingMachineInterface {
     void put(String name, int frequency);
 
-    void toyDraw();
-
     Toy getToy();
 
     void getAllToys();
