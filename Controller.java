@@ -22,10 +22,7 @@ public class Controller {
             switch (select) {
                 case 1 -> toysLoad();
                 case 2 -> toyGamingMachine.getAllToys();
-                case 3 -> {
-                    toyGamingMachine.toyDraw();
-                    return;
-                }
+                case 3 -> toyDraw();
                 case 4 -> getHelp();
                 case 5 -> {
                     return;
@@ -43,6 +40,25 @@ public class Controller {
             String toyName = userInterface.askToyName();
             int frequency = userInterface.askNumber("частоту (вес) выпадения игрушки (от 1 до 10)");
             toyGamingMachine.put(toyName, frequency);
+        }
+    }
+
+    /**
+     * Непосредственно проводит розыгрыш игрушек указанное количество раз и записывает результаты розыгрыша в файл
+     */
+    public void toyDraw() {
+        int numberDraws = userInterface.askNumber("количество проводимых розыгрышей игрушек");
+        System.out.println("---------------------------------------------------------");
+        for (int i = 1; i <= numberDraws; i++) {
+            Toy toy = toyGamingMachine.getToy();
+            if (toy == null) {
+                System.out.println("Проведение розыгрыша невозможно, так как нет доступных игрушек!\n" +
+                        "Необходимо провести загрузку игрушек в автомат.");
+            } else {
+                String result = "Выпала игрушка: " + toy + "\n";
+                System.out.println(result);
+                toyGamingMachine.write(result);
+            }
         }
     }
 

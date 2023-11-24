@@ -1,7 +1,5 @@
 package ru.geekbrains.geektodolist.toyshop;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -39,7 +37,7 @@ public class UserInterface {
 
     String askToyName() {
         System.out.print("Введите наименование игрушки: ");
-        return scanner.nextLine();
+        return scanner.next();
     }
 
     int askNumber(String message) {
