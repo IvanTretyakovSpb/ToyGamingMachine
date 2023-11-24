@@ -37,7 +37,7 @@ public class Toy implements Comparable<Toy> {
 
     @Override
     public String toString() {
-        return String.format("Игрушка: %s (id: %d)", name, id);
+        return String.format("Название: %s (id: %d, частота выпадения: %d)", name, id, frequency);
     }
 
     @Override

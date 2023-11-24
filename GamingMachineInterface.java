@@ -9,7 +9,7 @@ package ru.geekbrains.geektodolist.toyshop;
 public interface GamingMachineInterface {
     void put(String name, int frequency);
 
-    void letsFun();
+    void toyDraw();
 
     Toy getToy();
 

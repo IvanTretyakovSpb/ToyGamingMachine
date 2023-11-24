@@ -1,5 +1,7 @@
 package ru.geekbrains.geektodolist.toyshop;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
@@ -31,13 +33,39 @@ public class GamingMachine implements GamingMachineInterface {
         boxOfToys.offer(new Toy(++id, name, frequency));
     }
 
+    /**
+     *
+     */
     @Override
-    public void letsFun() {
-
+    public void toyDraw() {
+        Toy toy = getToy();
+        if (toy == null) {
+            System.out.println("Розыгрыш окончен!");
+        } else {
+            String result = "Выпала игрушка: " + toy + "\n";
+            write(result);
+            System.out.println(result);
+        }
     }
 
+    /**
+     * @return экземпляр класса Toy или null при отсутствии доступных для розыгрыша игрушек
+     */
     @Override
     public Toy getToy() {
+        if (boxOfToys.isEmpty()) {
+            return null;
+        }
+        int totalFrequency = boxOfToys.stream().mapToInt(Toy::getFrequency).sum();
+        int randomNumber = random.nextInt(totalFrequency) + 1;
+        int cumulativeFrequency = 0;
+        for (Toy toy : boxOfToys) {
+            cumulativeFrequency += toy.getFrequency();
+            if (randomNumber <= cumulativeFrequency) {
+                boxOfToys.remove(toy);
+                return toy;
+            }
+        }
         return null;
     }
 
@@ -48,12 +76,17 @@ public class GamingMachine implements GamingMachineInterface {
     public void getAllToys() {
         System.out.println("В данный момент в розыгрыше участвуют следующие игрушки:");
         for (Toy toy : boxOfToys) {
-            System.out.println(toy);
+            int i = 0;
+            System.out.println(i + ")" + toy);
         }
     }
 
     @Override
     public void write(String name) {
-
+        try (FileWriter fw = new FileWriter("result.txt", true)) {
+            fw.write(name);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
