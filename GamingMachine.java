@@ -74,10 +74,11 @@ public class GamingMachine implements GamingMachineInterface {
      */
     @Override
     public void getAllToys() {
+        System.out.println("---------------------------------------------------------");
         System.out.println("В данный момент в розыгрыше участвуют следующие игрушки:");
+        int i = 0;
         for (Toy toy : boxOfToys) {
-            int i = 0;
-            System.out.println(i + ")" + toy);
+            System.out.println(++i + ") " + toy);
         }
     }
 

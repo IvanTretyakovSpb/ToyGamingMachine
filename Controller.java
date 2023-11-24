@@ -34,6 +34,7 @@ public class Controller {
         }
     }
 
+
     /**
      * Загружает требуемое количество игрушек в автомат для розыгрыша
      */
@@ -44,6 +45,7 @@ public class Controller {
             int frequency = userInterface.askNumber("частоту (вес) выпадения игрушки (от 1 до 10)");
             toyGamingMachine.put(toyName, frequency);
         }
+
     }
 
     void getHelp() {
